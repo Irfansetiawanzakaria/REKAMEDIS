@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Medis</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    body {
+      display: flex;
+      height: 100vh;
+      background-color: #f4f6f9;
+    }
+    .sidebar {
+      width: 250px;
+      background-color: #00bcd4;
+      padding-top: 20px;
+      color: white;
+    }
+    .sidebar h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+    .sidebar ul li {
+      padding: 15px 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      cursor: pointer;
+    }
+    .sidebar ul li:hover {
+      background-color: #0097a7;
+    }
+    .sidebar ul li i {
+      margin-right: 10px;
+    }
+
+    .main-content {
+      flex: 1;
+      padding: 20px;
+    }
+    .main-content header {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .cards {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .card {
+      background-color: #fff;
+      flex: 1;
+      margin: 0 10px;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .card i {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+    .charts {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .chart-box {
+      flex: 1;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    canvas {
+      width: 100% !important;
+      height: 300px !important;
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <h2>REKAMEDIS</h2>
+    <ul>
+      <li><i class="fas fa-home"></i> Dashboard</li>
+      <li><i class="fas fa-user-md"></i> Data Dokter</li>
+      <li><i class="fas fa-user-injured"></i> Data Pasien</li>
+      <li><i class="fas fa-notes-medical"></i> Rekam Medis</li>
+      <li><i class="fas fa-vials"></i> Laboratorium</li>
+      <li><i class="fas fa-sign-out-alt"></i> Logout</li>
+    </ul>
+  </div>
+  <div class="main-content">
+    <header>
+      <h1>Dashboard <small style="font-weight: normal; color: gray;">Summary of Rekam Medis</small></h1>
+    </header>
+    <div class="cards">
+      <div class="card">
+        <i class="fas fa-eye" style="color:#0284c7;"></i>
+        <h2></h2>
+        <p>Daily Visits</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-pills" style="color:#0ea5e9;"></i>
+        <h2></h2>
+        <p>Obat Terpakai</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-notes-medical" style="color:#f97316;"></i>
+        <h2></h2>
+        <p>Rekam Medis</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-users" style="color:#fbbf24;"></i>
+        <h2></h2>
+        <p>Total Pasien</p>
+      </div>
+    </div>
+    <div class="charts">
+      <div class="chart-box">
+        <h3>Area Chart</h3>
+        <canvas id="areaChart"></canvas>
+      </div>
+      <div class="chart-box">
+        <h3>Line Chart</h3>
+        <canvas id="lineChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const areaCtx = document.getElementById('areaChart').getContext('2d');
+    new Chart(areaCtx, {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+        datasets: [{
+          label: 'Data',
+          data: [3000, 4000, 3200, 5000, 4200],
+          fill: true,
+          backgroundColor: 'rgba(2, 132, 199, 0.2)',
+          borderColor: '#0284c7',
+          tension: 0.3
+        }]
+      }
+    });
+
+    const lineCtx = document.getElementById('lineChart').getContext('2d');
+    new Chart(lineCtx, {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+        datasets: [{
+          label: 'Visits',
+          data: [150, 200, 180, 230, 250],
+          borderColor: '#0ea5e9',
+          tension: 0.3,
+          fill: false
+        }, {
+          label: 'Rekam Medis',
+          data: [120, 190, 160, 210, 240],
+          borderColor: '#64748b',
+          tension: 0.3,
+          fill: false
+        }]
+      }
+    });
+  </script>
+</body>
+</html>

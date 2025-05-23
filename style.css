@@ -1,0 +1,146 @@
+/* Dark/light mode based on system preference */
+:root {
+    --bg-color: #f0f4f8;
+    --text-color: #000;
+    --box-bg: #fff;
+    --input-bg: #eee;
+    --btn-bg: #f44336;
+    --btn-hover: #d32f2f;
+    --link-color: #007bff;
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg-color: #121212;
+      --text-color: #fff;
+      --box-bg: #1e1e1e;
+      --input-bg: #2c2c2c;
+      --btn-bg: #ff3d00;
+      --btn-hover: #e53900;
+      --link-color: #4dabf7;
+    }
+  }
+  
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .login-box {
+    background-color: var(--box-bg);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    width: 320px;
+  }
+  
+  .icon {
+    font-size: 32px;
+  }
+  
+  h2 {
+    margin: 10px 0 25px;
+    font-weight: bold;
+  }
+  
+  select {
+    padding: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background-color: var(--input-bg);
+    color: var(--text-color);
+  }
+  
+  .input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: var(--input-bg);
+  }
+  
+  .input-icon {
+    padding: 10px;
+  }
+  
+  input[type="text"], input[type="password"] {
+    border: none;
+    outline: none;
+    padding: 10px;
+    width: 100%;
+    background: transparent;
+    color: var(--text-color);
+  }
+  
+  .login-btn {
+    background: var(--btn-bg);
+    color: white;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s;
+    font-weight: bold;
+  }
+  
+  .login-btn:hover {
+    background: var(--btn-hover);
+    transform: scale(1.03);
+  }
+  
+  .links {
+    margin-top: 15px;
+    font-size: 14px;
+  }
+  
+  .links a {
+    color: var(--link-color);
+    text-decoration: none;
+  }
+  
+  /* Spinner Overlay */
+  .spinner-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.4);
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+  }
+  
+  .spinner {
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid var(--btn-bg);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  

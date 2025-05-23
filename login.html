@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>eClinic Pro Login</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-box">
+      <div class="icon">👓</div>
+      <h2>LOGIN</h2>
+
+      <select id="role">
+        <option value="dokter">Login sebagai Dokter</option>
+        <option value="pasien">Login sebagai Pasien</option>
+      </select>
+
+      <form id="loginForm">
+        <div class="input-group">
+          <span class="input-icon">👤</span>
+          <input type="text" placeholder="Username" required />
+        </div>
+        <div class="input-group">
+          <span class="input-icon">🔒</span>
+          <input type="password" placeholder="Password" required />
+        </div>
+        <a href="dashboard.html" class="login-btn">Login</a>
+      </form>
+
+      <div class="links">
+      </div>
+    </div>
+  </div>
+
+  <div class="spinner-overlay" id="spinner">
+    <div class="spinner"></div>
+  </div>
+</body>
+</html>
